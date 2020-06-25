@@ -4,6 +4,10 @@ import java.time.Duration;
 
 import lombok.Getter;
 
+/*
+* DiscountPolicy라는 인터페이스를 합성(조립)하여
+* 인스턴스 변수로 사용함.
+* */
 public class Movie {
 	private String title;
 	private Duration runningTime;
@@ -20,5 +24,9 @@ public class Movie {
 
 	public Money calculateMovieFee(Screening screening) {
 		return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+	}
+
+	public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+		this.discountPolicy = discountPolicy;
 	}
 }
